@@ -1,0 +1,17 @@
+defmodule Identicon do
+ def main (input) do
+  input
+  |> hash_input
+ end
+
+ @spec hash_input(
+         binary
+         | maybe_improper_list(binary | maybe_improper_list(any, binary | []) | byte, binary | [])
+       ) :: [byte]
+ def hash_input(input) do
+  :crypto.hash(:md5, input)
+  |>:binary.bin_to_list
+
+ end
+
+end
